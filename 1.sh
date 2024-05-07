@@ -10,7 +10,7 @@
 # Function to update the script
 update_script() {
     echo "Checking for script updates..."
-    curl -s https://yourrepository.com/install_my_tools.sh | bash
+    curl -s https://raw.githubusercontent.com/kbr-09/1/main/1.sh | bash
     echo "Update check complete."
 }
 
