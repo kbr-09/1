@@ -1,24 +1,41 @@
 #!/bin/bash
 
-# Greeting message
-echo "Welcome to the automated installation script."
-echo "This script will install the necessary tools and Python packages."
+# Function to install Numpy
+# install_numpy() {
+#     echo "Installing Numpy..."
+#     pip3 install numpy
+#     echo "Numpy installed successfully."
+# }
 
-# Wait for the user to press a key
-read -p "Press any key to continue... " -n1 -s
-echo ""
+# Function to update the script
+update_script() {
+    echo "Checking for script updates..."
+    curl -s https://yourrepository.com/install_my_tools.sh | bash
+    echo "Update check complete."
+}
 
-# Define your list of packages
-#packages="git vim curl python3 python3-pip"
-packages = ""
+# Menu system
+echo "Welcome to the Automated Installation Script"
+echo "Please choose an option:"
+echo "1) Install Numpy"
+echo "2) Update this script"
+echo "3) Exit"
 
-# Update and upgrade the system
-sudo apt update && sudo apt upgrade -y
+read -p "Enter your choice [1-3]: " choice
 
-# Install packages
-sudo apt install -y $packages
-
-# Install Python packages
-pip3 install numpy
-
-echo "Installation of tools and Numpy complete!"
+case $choice in
+    1)
+        install_numpy
+        ;;
+    2)
+        update_script
+        ;;
+    3)
+        echo "Exiting..."
+        exit 0
+        ;;
+    *)
+        echo "Invalid option."
+        exit 1
+        ;;
+esac
